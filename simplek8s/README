@@ -1,0 +1,90 @@
+minikube start
+
+kubectl apply -f client-pod.yaml
+kubectl apply -f client-node-port.yaml
+
+kubectl delete -f client-pod.yaml
+kubectl delete -f client-node-port.yaml
+kubectl get pods
+
+In Kubernetes, a Service is an abstraction which defines a logical set of Pods and a policy by which to access them
+ (sometimes this pattern is called a micro-service).
+  The set of Pods targeted by a Service is usually determined by a selector.
+kubectl get services
+
+
+minikube ip
+http://192.168.64.2:31515/
+
+----update yml
+--then get detailed info
+kubectl describe pod client-pod
+
+-update pods only allow for exampls image not port.
+New type of Object:
+Deployment :  kuberbets object maintains a set of identical pods.
+
+Pods: runs a single set of containers, good for one-off dev . not for prod
+
+Deployment: runs a set of identical pods - monitors the state of each pod, good for dev, good for prod
+replicas : number of pods using temlate written
+
+kubectl apply -f client-deployment.yaml
+kubectl get deployments
+
+kubectl get pods -o wide
+every pod has a single ip
+
+
+uodate image for kub deplot,ent
+docker build -t  arshtp23/mlti-client:v5
+docker pus tag
+
+--impetartive
+kubectl set image deployment/client-deployment client=arsh7023/multi-client:v5
+kubectl get pods
+
+eval ($minikube docker-env) == config the vm to use your docker server
+
+munikube docker-env
+
+kubectl delete deployment client-deployment
+
+kubectl apply -f foldername = apply all files inside folder
+kubectl apply -f k8s == look at complex-stephen project
+---
+kubectl get pods = get id
+kubectl logs id
+
+volume =  deletes when pods delets
+persistent volume
+
+PersistenceVolumeClaim
+
+accessMode s21.png
+
+kubectl get storageclass
+kubectl describe storageclass
+
+kubectl get pv : persistent volumes
+kubectl get pvc : persistent volumes claims
+
+Secrets: secure information like passwords
+kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345asdf
+
+kubectl get secrets
+
+loadbalancer : legacy
+ingress = new
+igress-nginx community version s29.png
+https://github.com/kubernetes/ingress-nginx
+
+controller:
+in k8 a controller is any type of  object that constantly works to meet a desire state of a reality
+
+https://www.joyfulbikeshedding.com/blog/2018-03-26-studying-the-kubernetes-ingress-system.html
+https://kubernetes.github.io/ingress-nginx/deploy/#prerequisite-generic-deployment-command
+
+ minikube dashboard
+
+ kubectl get namespaces
