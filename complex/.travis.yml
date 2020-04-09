@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t arsh7023/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t arsh7023/react-test -f ./client/Dockerfile1.dev ./client
 
 script:
   - docker run arsh7023/react-test npm test -- --coverage
