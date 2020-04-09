@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: client-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       component: web
@@ -13,7 +13,7 @@ spec:
         component: web
     spec:
       containers:
-        - name: client
-          image: arsh7023/multi-client
-          ports:
-            - containerPort: 3000
+       - name: client
+         image: arsh7023/multi-client
+         ports:
+           - containerPort: 3000
