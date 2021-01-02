@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
    - name: client
-     image: arsh7023/multi-client
+     image: stephengrider/multi-client
      ports:
        - containerPort: 3000
      imagePullPolicy: Always
